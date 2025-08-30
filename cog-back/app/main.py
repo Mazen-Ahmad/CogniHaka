@@ -11,7 +11,8 @@ origins = [
     "http://localhost:5173",  # Your local development frontend
     "http://localhost:3000",  # Another common local port
     # Add your deployed frontend URL here when you have it
-    "https://cogni-haka.vercel.app/"
+    "https://cogni-haka.vercel.app",
+    "https://cognihaka.onrender.com"
 ]
 
 app.add_middleware(
