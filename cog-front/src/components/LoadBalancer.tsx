@@ -436,7 +436,7 @@ const LoadBalancer: React.FC = () => {
     setOptimizedData(null); 
 
     try {
-      const response = await fetch('https://cog-back-api.onrender.com/api/analyze-orders', {
+      const response = await fetch('https://cognihaka.onrender.com/api/analyze-orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -479,7 +479,7 @@ const LoadBalancer: React.FC = () => {
     
     setIsOptimizing(true);
     try {
-        const response = await fetch('https://cog-back-api.onrender.com/api/assign-orders', {
+        const response = await fetch('https://cognihaka.onrender.com/api/assign-orders', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
