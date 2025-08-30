@@ -11,13 +11,13 @@ origins = [
     "http://localhost:5173",  # Your local development frontend
     "http://localhost:3000",  # Another common local port
     # Add your deployed frontend URL here when you have it
-    "https://cogni-haka.vercel.app",
-    "https://cognihaka.onrender.com"
+    "https://cog-front.vercel.app",
+    "https://cog-front.vercel.app/load-balancer"
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"], # Allows all methods (GET, POST, etc.)
     allow_headers=["*"], # Allows all headers
