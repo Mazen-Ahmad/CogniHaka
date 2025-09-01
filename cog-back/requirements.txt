@@ -4,3 +4,5 @@ pandas
 numpy
 pulp
 python-multipart
+scikit-learn
+scipy

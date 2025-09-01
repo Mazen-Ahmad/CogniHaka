@@ -11,7 +11,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { BarChart3, Package, TrendingUp, Users, Quote } from "lucide-react";
+import { BarChart3, Package, TrendingUp, Users, Factory, Heart, Coffee, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Sample Data
@@ -25,203 +25,6 @@ const workloadData = [
 const imbalanceTrend = [
   { iteration: "Before", imbalance: 62 },
   { iteration: "After", imbalance: 28 },
-];
-
-const testimonials = [
-  {
-    name: "FreshBites Logistics",
-    quote: "Reduced workload imbalance by 40%. Game changer!",
-  },
-  {
-    name: "Mid-size Factory",
-    quote: "Optimized resource usage and cut delays by 25%.",
-  },
-  {
-    name: "Retail Partner",
-    quote: "Seamless demand forecasting boosted sales accuracy.",
-  },
-  {
-    name: "TechOps Inc.",
-    quote: "Brilliant analytics. Saved us hours weekly.",
-  },
-
-  // --- Added 50+ more ---
-  {
-    name: "Metro Supply Chain",
-    quote: "Balanced workloads improved delivery timelines drastically.",
-  },
-  {
-    name: "BlueLine Manufacturing",
-    quote: "Cut machine downtime by 18% with predictive insights.",
-  },
-  {
-    name: "UrbanGrocer",
-    quote: "Inventory optimization reduced stockouts by 22%.",
-  },
-  {
-    name: "PharmaPlus",
-    quote: "Ensured critical drug stock was always available across centers.",
-  },
-  {
-    name: "FinCore Systems",
-    quote: "Optimized IT operations saved us 12 hours weekly.",
-  },
-  {
-    name: "AutoWorks Ltd.",
-    quote: "Assembly line scheduling improved throughput by 15%.",
-  },
-  {
-    name: "Global Textiles",
-    quote: "Balanced production across units with minimal waste.",
-  },
-  {
-    name: "FoodChain Co.",
-    quote: "Order balancing improved efficiency during peak hours.",
-  },
-  {
-    name: "MediCare Logistics",
-    quote: "Reduced emergency supply imbalance by 30%.",
-  },
-  {
-    name: "EcoMart",
-    quote: "Helped reduce food waste with accurate demand forecasts.",
-  },
-  {
-    name: "RetailPro",
-    quote: "Improved delivery promises and customer satisfaction.",
-  },
-  {
-    name: "SteelForge Inc.",
-    quote: "Shift balancing helped reduce worker overtime.",
-  },
-  {
-    name: "AgriWorld",
-    quote: "Crop distribution optimization improved farmer payouts.",
-  },
-  { name: "Urban Transit", quote: "Route balancing cut fuel costs by 12%." },
-  {
-    name: "Alpha Hardware",
-    quote: "Optimized shipments saved $50k in logistics costs.",
-  },
-  {
-    name: "BrightFoods",
-    quote: "Balanced workloads improved holiday season handling.",
-  },
-  {
-    name: "EduServe",
-    quote: "Classroom scheduling efficiency improved by 20%.",
-  },
-  {
-    name: "CleanCity Ops",
-    quote: "Waste pickup routes optimized, saving 8% fuel.",
-  },
-  {
-    name: "NextGen Labs",
-    quote: "Resource balancing reduced experiment downtime.",
-  },
-  {
-    name: "EcoLogistics",
-    quote: "Carbon footprint reduced by smarter allocation.",
-  },
-  {
-    name: "BuildMax Constructions",
-    quote: "Optimized workforce scheduling boosted speed.",
-  },
-  { name: "FreshMart", quote: "Cut stock-outs in fresh produce by 19%." },
-  {
-    name: "PharmaChain",
-    quote: "Balanced distribution across pharmacies effectively.",
-  },
-  {
-    name: "QuickServe",
-    quote: "Improved kitchen efficiency by balancing order flow.",
-  },
-  {
-    name: "AeroParts",
-    quote: "Supply chain resilience improved with workload balancing.",
-  },
-  {
-    name: "PowerGrid Ltd.",
-    quote: "Balanced maintenance workloads across sites.",
-  },
-  { name: "UrbanFoods", quote: "Warehouse workload imbalance reduced by 35%." },
-  {
-    name: "Medico Supplies",
-    quote: "Ensured ventilators reached hospitals on time.",
-  },
-  {
-    name: "TechRetail",
-    quote: "Delivery SLA improvements boosted NPS scores.",
-  },
-  { name: "GreenEnergy", quote: "Optimized plant operations saved 7% energy." },
-  {
-    name: "TransportHub",
-    quote: "Fleet workload balance improved utilization.",
-  },
-  {
-    name: "BioCare Labs",
-    quote: "Distribution optimization saved critical hours.",
-  },
-  {
-    name: "AgriChain",
-    quote: "Fair balancing improved farmer logistics experience.",
-  },
-  {
-    name: "SmartCity Ops",
-    quote: "Cut traffic rerouting delays with AI balancing.",
-  },
-  {
-    name: "RetailOne",
-    quote: "Holiday rush handled smoothly with balanced orders.",
-  },
-  { name: "FarmFresh Foods", quote: "Warehouse throughput improved by 18%." },
-  {
-    name: "ShipMate Logistics",
-    quote: "Global shipments balanced effectively.",
-  },
-  { name: "MediTrust", quote: "Pharma supply chain delays reduced by 27%." },
-  { name: "AutoTrack", quote: "Assembly line idle time cut down drastically." },
-  {
-    name: "QuickCart",
-    quote: "Balanced last-mile deliveries cut delays by 14%.",
-  },
-  {
-    name: "MegaFoods",
-    quote: "Reduced wastage in perishable goods distribution.",
-  },
-  { name: "Urban Logistics", quote: "Reduced order backlog by 30%." },
-  {
-    name: "TechFab",
-    quote: "Optimized workforce allocation boosted efficiency.",
-  },
-  {
-    name: "BioMed Pharma",
-    quote: "Supply allocation balanced across multiple states.",
-  },
-  {
-    name: "CoolChain",
-    quote: "Cold storage utilization improved significantly.",
-  },
-  {
-    name: "PackPro",
-    quote: "Cut warehouse packing delays with smarter allocation.",
-  },
-  {
-    name: "SteelWorks",
-    quote: "Balanced workload improved production line flow.",
-  },
-  {
-    name: "FreshDirect",
-    quote: "Daily order balancing improved customer satisfaction.",
-  },
-  { name: "CityTransport", quote: "Fleet balancing reduced downtime." },
-  { name: "RetailMax", quote: "Optimized inventory flow improved margins." },
-  { name: "BrightLogistics", quote: "Reduced workload spikes by 22%." },
-  { name: "AgroChain", quote: "Distribution balance improved farmer incomes." },
-  {
-    name: "MediFlow",
-    quote: "Hospital supplies reached faster via balanced allocation.",
-  },
 ];
 
 const faqs = [
@@ -250,7 +53,7 @@ const faqs = [
 const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen font-sans relative overflow-hidden bg-gradient-to-br from-blue-50 to-white">
-      {/* 🔵 Mesh Background */}
+      {/* ðŸ”µ Mesh Background */}
       <div className="absolute top-0 left-0 w-full h-full -z-10">
         <div className="absolute top-40 left-1/3 w-[600px] h-[600px] bg-blue-900 rounded-full mix-blend-multiply filter blur-[140px] opacity-40 animate-pulse"></div>
         <div className="absolute bottom-20 right-1/4 w-[500px] h-[500px] bg-indigo-800 rounded-full mix-blend-multiply filter blur-[140px] opacity-40 animate-pulse"></div>
@@ -278,7 +81,7 @@ const Dashboard: React.FC = () => {
       </header>
 
       <main className="max-w-7xl mx-auto px-6 py-16 space-y-24">
-        {/* 🔹 Feature Cards */}
+        {/* ðŸ”¹ Feature Cards */}
         <motion.div
           className="grid md:grid-cols-2 gap-8"
           initial="hidden"
@@ -292,13 +95,13 @@ const Dashboard: React.FC = () => {
           {[
             {
               icon: <Users className="text-blue-600" size={32} />,
-              title: "E1 – Packing Station Load Balancer",
+              title: "E1 â€“ Packing Station Load Balancer",
               subtitle: "Balance workloads efficiently",
               text: "Optimize packing station assignments to reduce bottlenecks and improve overall efficiency.",
             },
             {
               icon: <Package className="text-blue-600" size={32} />,
-              title: "P1 – Inventory Optimization",
+              title: "P1 â€“ Inventory Optimization",
               subtitle: "Perfect demand-supply balance",
               text: "Analyze demand patterns, reduce stock-outs, and minimize overstock with AI-powered recommendations.",
             },
@@ -322,13 +125,13 @@ const Dashboard: React.FC = () => {
                 to={idx === 0 ? "/load-balancer" : "/inventory-optimizer"}
                 className="mt-6 inline-block px-5 py-3 bg-cyan-200 text-blue-900 font-bold rounded-lg hover:bg-cyan-300 transition"
               >
-                Get Started →
+                Get Started â†’
               </Link>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* 🔹 Charts */}
+        {/* ðŸ”¹ Charts */}
         <motion.div
           className="bg-white rounded-2xl shadow-xl p-10 border border-gray-100"
           initial={{ opacity: 0, y: 50 }}
@@ -377,29 +180,208 @@ const Dashboard: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* 🔹 Testimonials Auto-Scroll */}
-        <section className="overflow-hidden relative">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-            What Our Clients Say
-          </h3>
+        <section className="py-16">
           <motion.div
-            className="flex gap-8 animate-marquee"
-            style={{ animation: "marquee 20s linear infinite" }}
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            {testimonials.map((t, idx) => (
-              <div
-                key={idx}
-                className="bg-white shadow-md rounded-xl p-6 w-80 flex-shrink-0"
-              >
-                <Quote className="text-blue-600 mb-3" size={24} />
-                <p className="text-gray-700 italic mb-3">"{t.quote}"</p>
-                <h4 className="text-sm font-bold text-gray-900">— {t.name}</h4>
+            <h3 className="text-4xl font-bold text-gray-800 mb-4">
+              Where Can It Be <span className="text-blue-600">Used?</span>
+            </h3>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Discover the versatility of our platform across different industries and use cases
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[200px]"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { 
+                opacity: 1, 
+                transition: { 
+                  staggerChildren: 0.1,
+                  duration: 0.8
+                } 
+              },
+            }}
+          >
+            {/* Left Top - Warehouse */}
+            <motion.div
+              className="md:col-span-1 md:row-span-1 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 text-white relative overflow-hidden group hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-xl"
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              <div className="absolute -top-5 -right-5 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                  <Package className="text-white" size={24} />
+                </div>
+                <h4 className="text-lg font-bold mb-2">Warehouse Operations</h4>
+                <p className="text-emerald-100 text-sm">Smart inventory management and logistics optimization</p>
+              </div>
+            </motion.div>
+
+            {/* Center - Manufacturing Excellence (2x2) */}
+            <motion.div
+              className="md:col-span-2 md:row-span-2 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-white relative overflow-hidden group hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-xl"
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                  <Factory className="text-white" size={32} />
+                </div>
+                <h4 className="text-2xl font-bold mb-4">Manufacturing Excellence</h4>
+                <p className="text-blue-100 leading-relaxed mb-6">
+                  Optimize production lines, reduce bottlenecks, and maximize efficiency with 
+                  intelligent workload distribution and real-time analytics.
+                </p>
+                <div className="flex gap-2 flex-wrap">
+                  <span className="bg-white/20 px-3 py-1 rounded-full text-sm">Production</span>
+                  <span className="bg-white/20 px-3 py-1 rounded-full text-sm">Quality Control</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Top - Retail */}
+            <motion.div
+              className="md:col-span-1 md:row-span-1 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl p-6 text-white relative overflow-hidden group hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-xl"
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              <div className="absolute -top-5 -right-5 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                  <TrendingUp className="text-white" size={24} />
+                </div>
+                <h4 className="text-lg font-bold mb-2">Retail Analytics</h4>
+                <p className="text-purple-100 text-sm">Customer behavior analysis and demand forecasting</p>
+              </div>
+            </motion.div>
+
+            {/* Left Bottom - Healthcare */}
+            <motion.div
+              className="md:col-span-1 md:row-span-1 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl p-6 text-white relative overflow-hidden group hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-xl"
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              <div className="absolute -top-5 -right-5 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                  <Heart className="text-white" size={24} />
+                </div>
+                <h4 className="text-lg font-bold mb-2">Healthcare</h4>
+                <p className="text-pink-100 text-sm">Resource allocation and patient flow optimization</p>
+              </div>
+            </motion.div>
+
+            {/* Right Bottom - Food & Beverage */}
+            <motion.div
+              className="md:col-span-1 md:row-span-1 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl p-6 text-white relative overflow-hidden group hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-xl"
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              <div className="absolute -top-5 -right-5 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                  <Coffee className="text-white" size={24} />
+                </div>
+                <h4 className="text-lg font-bold mb-2">Food & Beverage</h4>
+                <p className="text-yellow-100 text-sm">Production planning and quality assurance</p>
+              </div>
+            </motion.div>
+
+            {/* Bottom Wide - Supply Chain Management */}
+            <motion.div
+              className="md:col-span-2 md:row-span-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-6 text-white relative overflow-hidden group hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-xl"
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              <div className="absolute -top-5 -right-5 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+              <div className="relative z-10 flex items-center justify-between">
+                <div>
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                    <Truck className="text-white" size={24} />
+                  </div>
+                  <h4 className="text-xl font-bold mb-2">Supply Chain Management</h4>
+                  <p className="text-orange-100">End-to-end visibility and optimization across your entire supply network</p>
+                </div>
+                <div className="hidden md:block">
+                  <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
+                    <div className="w-8 h-8 bg-white/20 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Bottom Wide - Logistics & Transportation */}
+            <motion.div
+              className="md:col-span-2 md:row-span-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-6 text-white relative overflow-hidden group hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-xl"
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              <div className="absolute -top-5 -right-5 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+              <div className="relative z-10 flex items-center justify-between">
+                <div>
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                    <BarChart3 className="text-white" size={24} />
+                  </div>
+                  <h4 className="text-xl font-bold mb-2">Logistics & Transportation</h4>
+                  <p className="text-cyan-100">Route optimization and fleet management for efficient delivery operations</p>
+                </div>
+                <div className="hidden md:block">
+                  <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
+                    <div className="w-8 h-8 bg-white/20 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Bottom Stats */}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            {[
+              { number: "50+", label: "Industries Served" },
+              { number: "1000+", label: "Operations Optimized" },
+              { number: "30%", label: "Average Efficiency Gain" },
+              { number: "24/7", label: "Real-time Monitoring" },
+            ].map((stat, idx) => (
+              <div key={idx} className="p-4">
+                <div className="text-3xl font-bold text-blue-600 mb-2">{stat.number}</div>
+                <div className="text-gray-600 text-sm">{stat.label}</div>
               </div>
             ))}
           </motion.div>
         </section>
 
-        {/* 🔹 FAQ */}
+
+        {/* ðŸ”¹ FAQ */}
         <section>
           <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
             Frequently Asked Questions
@@ -439,12 +421,12 @@ const Dashboard: React.FC = () => {
             to="/load-balancer"
             className="px-8 py-4 bg-white text-blue-700 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition"
           >
-            Get Started →
+            Get Started â†’
           </Link>
         </motion.div>
       </main>
 
-      {/* 🔹 Smooth Auto-scroll Keyframes */}
+      {/* ðŸ”¹ Smooth Auto-scroll Keyframes */}
       <style>
         {`
           @keyframes marquee {

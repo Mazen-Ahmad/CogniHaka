@@ -228,7 +228,7 @@ const LoadBalancer: React.FC = () => {
             </Link>
             <div>
               <h1 className="text-2xl font-bold flex items-center gap-3">
-                <BarChart3 size={28} /> E1 – Packing Station Load Balancer
+                <BarChart3 size={28} /> E1 â€“ Packing Station Load Balancer
               </h1>
               <p className="text-blue-100 mt-1">
                 Balance workloads across packing stations for optimal efficiency
@@ -337,7 +337,7 @@ const LoadBalancer: React.FC = () => {
                   />
                 </div>
 
-                {/* NEW: Order → Station Allocation */}
+                {/* NEW: Order â†’ Station Allocation */}
                 {analysisData.assignments && (
                   <div className="space-y-4">
                     <ResultsTable

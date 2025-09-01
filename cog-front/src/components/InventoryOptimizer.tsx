@@ -147,7 +147,7 @@ const InventoryOptimizer: React.FC = () => {
             <div>
               <h1 className="text-2xl font-bold flex items-center gap-3">
                 <Package size={28} />
-                P1 – Inventory Optimization at FreshBites
+                P1 â€“ Inventory Optimization at FreshBites
               </h1>
               <p className="text-blue-100 mt-1">Achieve perfect demand-supply balance across all regions</p>
             </div>
