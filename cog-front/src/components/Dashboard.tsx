@@ -11,7 +11,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { BarChart3, Package, TrendingUp, Users, Factory, Heart, Coffee, Truck } from "lucide-react";
+import { BarChart3, Package, TrendingUp, Users, Factory, Heart, Coffee, Truck, Activity } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Sample Data
@@ -53,23 +53,28 @@ const faqs = [
 const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen font-sans relative overflow-hidden bg-gradient-to-br from-blue-50 to-white">
-      {/* ðŸ”µ Mesh Background */}
+      {/* 🔵 Mesh Background */}
       <div className="absolute top-0 left-0 w-full h-full -z-10">
         <div className="absolute top-40 left-1/3 w-[600px] h-[600px] bg-blue-900 rounded-full mix-blend-multiply filter blur-[140px] opacity-40 animate-pulse"></div>
         <div className="absolute bottom-20 right-1/4 w-[500px] h-[500px] bg-indigo-800 rounded-full mix-blend-multiply filter blur-[140px] opacity-40 animate-pulse"></div>
       </div>
 
-      {/* Hero */}
-      <header className="bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-900 text-white py-20 shadow-xl relative overflow-hidden">
+      {/* Hero - Reduced height from py-20 to py-12 */}
+      <header className="bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-900 text-white py-12 shadow-xl relative overflow-hidden">
         <motion.div
           className="max-w-7xl mx-auto px-6 text-center"
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl font-extrabold mb-4 tracking-tight">
-            Industrial Analytics Platform
-          </h1>
+          {/* Added logo with Activity icon and adjusted title layout */}
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              <Activity className="text-white" size={40} />
+            </div>
+           <h1 className="text-5xl font-extrabold tracking-tight"> Supply Chain Analytics</h1>
+
+          </div>
           <p className="text-blue-100 text-lg max-w-2xl mx-auto leading-relaxed">
             Optimize operations with{" "}
             <span className="text-cyan-300 font-semibold">
@@ -81,7 +86,7 @@ const Dashboard: React.FC = () => {
       </header>
 
       <main className="max-w-7xl mx-auto px-6 py-16 space-y-24">
-        {/* ðŸ”¹ Feature Cards */}
+        {/* 🔹 Feature Cards */}
         <motion.div
           className="grid md:grid-cols-2 gap-8"
           initial="hidden"
@@ -95,15 +100,15 @@ const Dashboard: React.FC = () => {
           {[
             {
               icon: <Users className="text-blue-600" size={32} />,
-              title: "E1 â€“ Packing Station Load Balancer",
+              title: "E1: Packing Station Load Balancer",
               subtitle: "Balance workloads efficiently",
               text: "Optimize packing station assignments to reduce bottlenecks and improve overall efficiency.",
             },
             {
               icon: <Package className="text-blue-600" size={32} />,
-              title: "P1 â€“ Inventory Optimization",
-              subtitle: "Perfect demand-supply balance",
-              text: "Analyze demand patterns, reduce stock-outs, and minimize overstock with AI-powered recommendations.",
+              title: "P1: Inventory Optimization",
+              subtitle: "Supply chain planning & lean inventory",
+              text: "Analyze demand patterns, reduce stock-outs, minimize overstock and manage capacity constraints with AI-powered recommendations.",
             },
           ].map((card, idx) => (
             <motion.div
@@ -125,13 +130,13 @@ const Dashboard: React.FC = () => {
                 to={idx === 0 ? "/load-balancer" : "/inventory-optimizer"}
                 className="mt-6 inline-block px-5 py-3 bg-cyan-200 text-blue-900 font-bold rounded-lg hover:bg-cyan-300 transition"
               >
-                Get Started â†’
+                Get Started
               </Link>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* ðŸ”¹ Charts */}
+        {/* 🔹 Charts */}
         <motion.div
           className="bg-white rounded-2xl shadow-xl p-10 border border-gray-100"
           initial={{ opacity: 0, y: 50 }}
@@ -380,8 +385,7 @@ const Dashboard: React.FC = () => {
           </motion.div>
         </section>
 
-
-        {/* ðŸ”¹ FAQ */}
+        {/* 🔹 FAQ */}
         <section>
           <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
             Frequently Asked Questions
@@ -415,18 +419,17 @@ const Dashboard: React.FC = () => {
             Ready to Optimize Your Operations?
           </h2>
           <p className="text-blue-100 mb-6">
-            Start your first analysis today with free beta access.
+            Start your first analysis today with free access.
           </p>
           <Link
             to="/load-balancer"
             className="px-8 py-4 bg-white text-blue-700 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition"
           >
-            Get Started â†’
+            Get Started
           </Link>
         </motion.div>
       </main>
 
-      {/* ðŸ”¹ Smooth Auto-scroll Keyframes */}
       <style>
         {`
           @keyframes marquee {

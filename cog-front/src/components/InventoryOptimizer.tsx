@@ -10,16 +10,13 @@ import {
   Minus,
   Factory,
   Truck,
-  AlertTriangle,
   Calendar,
   Target,
-  Settings,
 } from "lucide-react";
 import CSVUpload from "./shared/CSVUpload";
-import InventoryChart from "./charts/InventoryChart";
-import DemandChart from "./charts/DemandChart";
 import InsightsCard from "./shared/InsightsCard";
 import ResultsTable from "./shared/ResultsTable";
+import OptimizationExtras from './OptimizationExtras';
 
 interface EnhancedInventoryData {
   sku: string;
@@ -144,7 +141,6 @@ const InventoryOptimizer: React.FC = () => {
 
   // Festival settings
   const [festivalMultiplier, setFestivalMultiplier] = useState(1.45);
-  const [serviceLevelTarget, setServiceLevelTarget] = useState(0.95);
 
   // 🎯 DYNAMIC CAPACITY UTILIZATION - FIXED!
   const dynamicCapacityUtilization = useMemo(() => {
@@ -495,20 +491,13 @@ const handleFestivalPlanning = async () => {
         startDate: '2025-09-15',
         targetDate: '2025-10-01'
       })),
-      timeline: [
-        { week: -6, phase: 'Planning', status: 'pending' },
-        { week: -4, phase: 'Procurement', status: 'pending' },
-        { week: -2, phase: 'Production Ramp-up', status: 'pending' },
-        { week: 0, phase: 'Festival Period', status: 'pending' }
-      ]
+      
     };
     
     setFestivalPlan(mockFestivalPlan);
     setIsOptimizing(false);
   }, 2000);
 };
-
-
 
   const addInventoryItem = () => {
     const newItem: EnhancedInventoryData = {
@@ -657,7 +646,7 @@ const handleFestivalPlanning = async () => {
                 <div>
                   <CSVUpload
                     onFileUpload={handleFileUpload}
-                    description="Upload CSV with columns: sku,warehouse,product_category,current_stock,forecast_demand,actual_demand,production_capacity,unit_cost,holding_cost_rate,stockout_penalty,lead_time_days,shelf_life_days,is_festival_sensitive"
+                    description="Upload CSV with columns as in manual input."
                   />
                   {uploadedFile && (
                     <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
@@ -1120,27 +1109,7 @@ const handleFestivalPlanning = async () => {
                   </p>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Service Level Target
-                  </label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    min="0.8"
-                    max="1.0"
-                    value={serviceLevelTarget}
-                    onChange={(e) =>
-                      setServiceLevelTarget(parseFloat(e.target.value) || 0.95)
-                    }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    Target service level (95% = 95% demand fulfillment)
-                  </p>
-                </div>
-
-                <div className="flex items-end">
+                <div className="flex items-end mb-5 ml-7">
                   <button
                     onClick={handleFestivalPlanning}
                     disabled={isOptimizing}
@@ -1388,7 +1357,7 @@ const handleFestivalPlanning = async () => {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                       <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                         <h4 className="font-semibold text-green-900">
-                          Service Level
+                          Service Level (Current)
                         </h4>
                         <p className="text-2xl font-bold text-green-700">
                           {optimizedData.performanceMetrics.serviceLevel}%
@@ -1452,6 +1421,10 @@ const handleFestivalPlanning = async () => {
                           ]}
                         />
                       </div>
+
+                      <OptimizationExtras 
+      capacityUtilization={optimizedData?.performanceMetrics?.capacityUtilization || 0} 
+    />
                     </div>
                   </div>
                 </div>

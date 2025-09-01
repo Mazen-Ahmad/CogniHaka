@@ -26,3 +26,4 @@ app.add_middleware(
 # Routers
 app.include_router(load_balancer.router, prefix="/api")
 app.include_router(inventory_optimizer.router, prefix="/api")
+app.include_router(gemini_router.router, prefix="/api")
