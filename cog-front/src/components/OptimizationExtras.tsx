@@ -14,7 +14,7 @@ const OptimizationExtras: React.FC<OptimizationExtrasProps> = ({ capacityUtiliza
     
     setLoading(true);
     try {
-      const result = await fetch('/api/gemini/query', {
+      const result = await fetch('https://cognihaka.onrender.com/api/gemini/query', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query })
