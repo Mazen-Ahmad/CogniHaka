@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import load_balancer, inventory_optimizer, gemini_router
+from .routers import load_balancer, inventory_optimizer, gemini_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Smart Supply Chain Optimizer")
