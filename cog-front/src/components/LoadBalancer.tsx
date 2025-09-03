@@ -215,6 +215,15 @@ const LoadBalancer: React.FC = () => {
     window.URL.revokeObjectURL(url);
   };
 
+  const handleDownloadSample = () => {
+    const link = document.createElement("a");
+    link.href = "/sample_orders.csv";
+    link.download = "sample_orders.csv";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-blue-900 text-white shadow-lg">
@@ -228,7 +237,7 @@ const LoadBalancer: React.FC = () => {
             </Link>
             <div>
               <h1 className="text-2xl font-bold flex items-center gap-3">
-                <BarChart3 size={28} /> E1 â€“ Packing Station Load Balancer
+                <BarChart3 size={28} /> E1 Packing Station Load Balancer
               </h1>
               <p className="text-blue-100 mt-1">
                 Balance workloads across packing stations for optimal efficiency
@@ -243,13 +252,22 @@ const LoadBalancer: React.FC = () => {
         <div className="bg-white rounded-xl shadow-lg p-8">
           <div className="grid md:grid-cols-3 gap-6 items-start">
             <div className="md:col-span-2">
-              <h2 className="text-xl font-bold text-gray-800 mb-6">
-                Input Order Data
-              </h2>
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-xl font-bold text-gray-800">
+                  Input Order Data
+                </h2>
+                <button
+                  onClick={handleDownloadSample}
+                  className="px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-900 transition-colors flex items-center gap-2"
+                >
+                  <Download size={16} />
+                  Download Sample CSV
+                </button>
+              </div>
               <CSVUpload
                 onFileUpload={handleFileUpload}
                 acceptedFileTypes=".csv"
-                description="Upload your order data (columns: id, packingTime)"
+                description="Upload your order data (columns: id, packingTime) or download the sample file above"
               />
             </div>
             <div>

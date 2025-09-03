@@ -1,0 +1,6 @@
+SKU,Warehouse,Product_Category,Current_Stock,Forecast_Demand,Actual_Demand,Production_Capacity,Unit_Cost,Holding_Cost_Rate,Stockout_Penalty,Lead_Time_Days,Shelf_Life_Days,Is_Festival_Sensitive
+PC001,Delhi,Potato Chips,10,40,60,30,15.5,0.25,50,7,90,TRUE
+NC001,Mumbai,Nachos,25,25,20,25,18.2,0.25,45,5,120,FALSE
+CK001,Kolkata,Cookies,15,20,22,15,12,0.25,40,5,90,FALSE
+EB001,Mumbai,Energy Bars,5,10,12,20,10,0.25,35,7,60,TRUE
+IN001,Kolkata,Noodles,20,35,50,25,8.5,0.25,30,6,90,TRUE

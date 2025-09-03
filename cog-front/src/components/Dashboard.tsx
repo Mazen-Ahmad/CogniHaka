@@ -136,56 +136,7 @@ const Dashboard: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* 🔹 Charts */}
-        <motion.div
-          className="bg-white rounded-2xl shadow-xl p-10 border border-gray-100"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
-            Analytics Preview
-          </h3>
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Workload Bar Chart */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-gray-700">
-                Workload Distribution
-              </h4>
-              <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={workloadData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="station" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="orders" fill="#2563eb" radius={[6, 6, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-            {/* Imbalance Trend */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-gray-700">
-                Imbalance Trend
-              </h4>
-              <ResponsiveContainer width="100%" height={250}>
-                <LineChart data={imbalanceTrend}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="iteration" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line
-                    type="monotone"
-                    dataKey="imbalance"
-                    stroke="#10b981"
-                    strokeWidth={3}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-        </motion.div>
-
-        <section className="py-16">
+        <section className="py-6">
           <motion.div
             className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -365,29 +316,11 @@ const Dashboard: React.FC = () => {
           </motion.div>
 
           {/* Bottom Stats */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            {[
-              { number: "50+", label: "Industries Served" },
-              { number: "1000+", label: "Operations Optimized" },
-              { number: "30%", label: "Average Efficiency Gain" },
-              { number: "24/7", label: "Real-time Monitoring" },
-            ].map((stat, idx) => (
-              <div key={idx} className="p-4">
-                <div className="text-3xl font-bold text-blue-600 mb-2">{stat.number}</div>
-                <div className="text-gray-600 text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
         </section>
 
         {/* 🔹 FAQ */}
         <section>
-          <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
+          <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
             Frequently Asked Questions
           </h3>
           <div className="space-y-4 max-w-3xl mx-auto">

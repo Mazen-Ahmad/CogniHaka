@@ -144,8 +144,8 @@ const InventoryOptimizer: React.FC = () => {
 
   // 🎯 DYNAMIC CAPACITY UTILIZATION - FIXED!
   const dynamicCapacityUtilization = useMemo(() => {
-    const totalDemand = inventoryData.reduce(
-      (sum, item) => sum + item.actual_demand,
+    const totalAllocated = inventoryData.reduce(
+      (sum: number, item: any) => sum + item.actual_demand,
       0
     );
     const totalCapacity = productionConstraints.reduce(
@@ -154,7 +154,7 @@ const InventoryOptimizer: React.FC = () => {
     );
 
     if (totalCapacity === 0) return 0;
-    return Math.round((totalDemand / totalCapacity) * 100 * 100) / 100; // Round to 2 decimal places
+    return Math.round((totalAllocated / totalCapacity) * 100 * 100) / 100; // Round to 2 decimal places
   }, [inventoryData, productionConstraints]); // Recalculates when either changes
 
   // 📊 DYNAMIC FORECAST ACCURACY - FIXED!
@@ -357,7 +357,7 @@ const InventoryOptimizer: React.FC = () => {
     // 🎯 PRODUCTION NEEDED = ONLY THE DEFICIT
     const productionNeeded = Math.max(0, totalOptimalStock - totalCurrentStock);
     
-    // 🏭 ALLOCATE PRODUCTION ACROSS FACTORIES PROPORTIONALLY
+    // Calculate production allocation and utilization
     const totalCapacity = productionConstraints.reduce((sum, factory) => sum + factory.weekly_capacity, 0);
     let remainingProduction = productionNeeded;
     
@@ -422,6 +422,10 @@ const InventoryOptimizer: React.FC = () => {
     const dynamicCostEfficiency = totalSupplyChainCost > 0 ? 
       ((totalDemand * 15) / totalSupplyChainCost) * 100 : 0;
 
+    // 📊 FIXED: Calculate actual capacity utilization based on allocations
+    const totalAllocatedProduction = productionAllocation.reduce((sum, alloc) => sum + alloc.allocatedDemand, 0);
+    const actualCapacityUtilization = Number(((totalAllocatedProduction / totalCapacity) * 100).toFixed(2));
+
     const mockOptimization = {
       productionAllocation: productionAllocation,
       inventoryOptimization: inventoryData.map((item) => {
@@ -454,7 +458,7 @@ const InventoryOptimizer: React.FC = () => {
       performanceMetrics: {
         serviceLevel: Number(dynamicServiceLevel.toFixed(2)),
         inventoryTurnover: Number(dynamicInventoryTurnover.toFixed(2)),
-        capacityUtilization: Number(dynamicCapacityUtilization.toFixed(2)),
+        capacityUtilization: actualCapacityUtilization, // 🔄 Using the corrected calculation
         costEfficiency: Number(dynamicCostEfficiency.toFixed(2)),
       },
     };
@@ -546,6 +550,15 @@ const handleFestivalPlanning = async () => {
     a.download = "supply_chain_optimization.csv";
     a.click();
     window.URL.revokeObjectURL(url);
+  };
+
+  const handleDownloadSample = () => {
+    const link = document.createElement('a');
+    link.href = '/sample_inventory.csv';
+    link.download = 'sample_inventory.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -644,9 +657,22 @@ const handleFestivalPlanning = async () => {
 
               {inputMethod === "csv" ? (
                 <div>
+                  <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-xl font-bold text-gray-800">
+                      Input Inventory Data
+                    </h2>
+                    <button
+                      onClick={handleDownloadSample}
+                      className="px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-900 transition-colors flex items-center gap-2"
+                    >
+                      <Download size={16} />
+                      Download Sample CSV
+                    </button>
+                  </div>
                   <CSVUpload
                     onFileUpload={handleFileUpload}
-                    description="Upload CSV with columns as in manual input."
+                    acceptedFileTypes=".csv"
+                    description="Upload your inventory data CSV or download the sample file above"
                   />
                   {uploadedFile && (
                     <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
@@ -968,7 +994,7 @@ const handleFestivalPlanning = async () => {
                 </div>
                 <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
                   <h4 className="font-semibold text-purple-900">
-                    Capacity Utilization
+                    Capacity Utilization (Based on current capacity)
                   </h4>
                   <p className="text-2xl font-bold text-purple-700">
                     {dynamicCapacityUtilization.toFixed(1)}%{" "}
@@ -1220,7 +1246,7 @@ const handleFestivalPlanning = async () => {
           )}
 
           {/* Analysis & Optimization Section */}
-          {(inventoryData.length > 0 || uploadedFile) && (
+          {(inventoryData.length > 0) && (
             <div className="bg-white rounded-lg shadow-sm p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5" />
@@ -1317,7 +1343,7 @@ const handleFestivalPlanning = async () => {
 
                       <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
                         <h4 className="font-semibold text-purple-900">
-                          Capacity Utilization
+                          Capacity Utilization (Actual Demand)
                         </h4>
                         <p className="text-2xl font-bold text-purple-700">
                           {dynamicCapacityUtilization.toFixed(1)}%{" "}
@@ -1373,7 +1399,7 @@ const handleFestivalPlanning = async () => {
                       </div>
                       <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
                         <h4 className="font-semibold text-purple-900">
-                          Capacity Utilization
+                          Capacity Utilization (Based on Optimal and current stock)
                         </h4>
                         <p className="text-2xl font-bold text-purple-700">
                           {optimizedData.performanceMetrics.capacityUtilization.toFixed(
@@ -1420,12 +1446,11 @@ const handleFestivalPlanning = async () => {
                             { key: "utilizationRate", title: "Utilization %" },
                           ]}
                         />
-                      </div>
-
-                      <OptimizationExtras 
-      capacityUtilization={optimizedData?.performanceMetrics?.capacityUtilization || 0} 
-    />
+                      </div>  
                     </div>
+                    <OptimizationExtras 
+                      capacityUtilization={optimizedData?.performanceMetrics?.capacityUtilization || 0} 
+                    />
                   </div>
                 </div>
               )}
