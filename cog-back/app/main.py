@@ -24,11 +24,13 @@ app.add_middleware(
     allow_headers=["*"], # Allows all headers
 )
 
-@app.route("/")
+@app.get("/")
+@app.head("/")
 def root():
     return RedirectResponse(url="/health")
 
-@app.route("/health", methods=["GET", "HEAD"])
+@app.get("/health")
+@app.head("/health")
 def health():
     return {"status": "healthy", "service": "Smart Supply Chain Optimizer"}
 
