@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from .routers import load_balancer, inventory_optimizer, gemini_router
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -22,6 +23,14 @@ app.add_middleware(
     allow_methods=["*"], # Allows all methods (GET, POST, etc.)
     allow_headers=["*"], # Allows all headers
 )
+
+@app.get("/")
+def root():
+    return RedirectResponse(url="/health")
+
+@app.get("/health")
+def health():
+    return {"status": "healthy", "service": "Smart Supply Chain Optimizer"}
 
 # Routers
 app.include_router(load_balancer.router, prefix="/api")
